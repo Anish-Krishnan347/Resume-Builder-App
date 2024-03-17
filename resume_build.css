@@ -1,0 +1,57 @@
+.main{
+    display: flex;
+    
+    justify-content: space-around;
+}
+.register{
+    width: 50%;
+    height: 500px;
+    overflow: scroll;
+}
+
+.input_container input{
+    width:200px;
+    border:1px solid black;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.code_preview pre{
+    padding: 20px;
+    width: 500px;
+    
+    border:1px solid black;
+    height: auto;
+}
+
+.container{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.registere{
+    width: 45%;
+    height: 450px;
+    background-color: palegoldenrod;
+    padding: 50px;
+    overflow-y: scroll;
+}
+.inner_content{
+    margin-bottom: 20px;
+}
+.inner_content input{
+    padding: 10px;
+}
+.code_review{
+    width: 45%;
+    height: 550px;
+    overflow-y: scroll;
+    background-color: paleturquoise;
+}
+span{
+    margin-left: 125px;
+    margin-top: -20px;
+    display: flex;
+    align-items: flex-start;
+}

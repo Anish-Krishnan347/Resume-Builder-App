@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Page</title>
+    <script src="resume.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="resume_build.css">
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          /* width: 100%; */
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        </style>
+</head>
+<body>
+    <h1>Edit your Resume</h1>
+    <label >Edit Title :</label><span><input type="text" id="editName" placeholder="Edit your title" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Name :</label><span><input type="text" id="editNames" placeholder="Edit your name" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Age :</label><span><input type="text" id="editAge" placeholder="Edit your age" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Email :</label><span><input type="text" id="editEmail" placeholder="Edit your email" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Contact :</label><span><input type="text" id="editContact" placeholder="Edit your contact" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Declaration :</label><span><input type="text" id="editDeclaration" placeholder="Edit your declaration" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Father Name :</label><span><input type="text" id="editFname" placeholder="Edit your Father Name" style="margin-left: 10px;"></span><br><br>
+    <label >Edit Mother Name :</label><span><input type="text" id="editMname" placeholder="Edit your Mother Name" style="margin-left: 10px;"></span><br><br>
+    <p>Skill</p>
+    <div id="skill">
+        
+    </div><button type='button' onclick="addMore('skill')">Add more</button><br>
+    <p>Language</p>
+    <div id="language">
+        
+    </div><button type='button' onclick="addMore('language')">Add more</button><br>
+    <p>Hobbies</p>
+    <div id="hobby">
+
+    </div><button type='button' onclick="addMore('hobby')">Add more</button><br>
+    <h2>Education</h2>
+    <table>
+        <thead>
+            <th>Edit Course</th>
+            <th>Edit Institute</th>
+            <th>Edit Percentage</th>
+            <th>Edit Year</th>
+        </thead>
+        <tbody id="editEducationTable">
+
+        </tbody>
+    </table>
+    <button type="button" onclick="addMore('editEducationTable')">Add more</button>
+    <br>
+    <h2>Experience</h2>
+    <table>
+        <thead>
+            <th>Edit company name</th>
+            <th>Edit role</th>
+            <th>Edit year</th>
+        </thead>
+        <tbody id="editExperienceTable">
+
+        </tbody>
+    </table><button type="button" onclick="addMore('editExperienceTable')">Add more</button>
+    <br>
+    <h2>Project</h2>
+    <table>
+        <thead>
+            <th>Edit project title</th>
+            <th>Edit role</th>
+            <th>Edit year</th>
+        </thead>
+        <tbody id="editProjectTable">
+
+        </tbody>
+    </table><button type="button" onclick="addMore('editProjectTable')">Add more</button><br><br>
+    
+    
+
+    <button onclick="editAndUpdate()" type="button">Update</button>
+    
+</body>
+
+<script>
+    editview()
+</script>
+</html>
