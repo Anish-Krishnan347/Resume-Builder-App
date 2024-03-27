@@ -17,11 +17,11 @@
                 alt="share" class="btn-img">
             SHARE</button>
         <nav class="collapsible-nav" id="collapsible-nav">
-            <a href="index.html" class="nav-link">HOME</a>
-            <a href="resume.html" class="nav-link">RESUME</a>
-            <a href="portfolio.html" class="nav-link">PORTFOLIO</a>
-            <a href="blog.html" class="nav-link active">BLOG</a>
-            <a href="contact.html" class="nav-link">CONTACT</a>
+            <a href="#" class="nav-link">HOME</a>
+            <a href="#" class="nav-link">RESUME</a>
+            <a href="#" class="nav-link">PORTFOLIO</a>
+            <a href="#" class="nav-link active">BLOG</a>
+            <a href="#" class="nav-link">CONTACT</a>
         </nav>
         <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
             data-target="collapsible-nav"><img src="assets/images/hamburger.svg" alt="hamburger"></button>
@@ -31,9 +31,9 @@
             <div class="profile-img-wrapper">
                 <img src="assets/images/Profile.png" alt="profile">
             </div>
-            <h1 class="profile-name">Daisy Murphy</h1>
+            <h1 class="profile-name" id="blog-name">Daisy Murphy</h1>
             <div class="text-center">
-                <span class="badge badge-white badge-pill profile-designation">UI / UX Designer</span>
+                <span class="badge badge-white badge-pill profile-designation" id="blog-title">UI / UX Designer</span>
             </div>
             <nav class="social-links">
                 <a href="#!" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -47,8 +47,8 @@
                 <div class="widget-content">
                     <p>BIRTHDAY : 15 April 1990</p>
                     <p>WEBSITE : www.example.com</p>
-                    <p>PHONE : +1 123 000 4444</p>
-                    <p>MAIL : your@example.com</p>
+                    <p id="blog-contact">PHONE : +1 123 000 4444</p>
+                    <p id="blog-mail">MAIL : your@example.com</p>
                     <p>Location : California, USA</p>
                     <button class="btn btn-download-cv btn-primary rounded-pill"> <img
                             src="assets/images/download.svg" alt="download" class="btn-img">DOWNLOAD CV </button>
@@ -58,20 +58,23 @@
                 <div class="card-body">
                     <div class="widget-content">
                         <h5 class="widget-title card-title">LANGUAGES</h5>
-                        <p>English : native</p>
-                        <p>Spanish : fluent</p>
-                        <p>Italian : fluent</p>
+                        <div id="blog-language"></div>
                     </div>
                 </div>
             </div>
             <div class="widget card">
                 <div class="card-body">
                     <div class="widget-content">
-                        <h5 class="widget-title card-title">INTERESTS</h5>
-                        <p>Video games</p>
-                        <p>Finance</p>
-                        <p>Basketball</p>
-                        <p>Theatre</p>
+                        <h5 class="widget-title card-title">Hobbies</h5>
+                        <div id="blog-hobbies"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="widget card">
+                <div class="card-body">
+                    <div class="widget-content">
+                        <h5 class="widget-title card-title">Skill</h5>
+                        <div id="blog-skills"></div>
                     </div>
                 </div>
             </div>
@@ -152,6 +155,10 @@
     <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/vendors/entry/jq.entry.min.js"></script>
     <script src="assets/js/live-resume.js"></script>
+
+    <script src="../template.js">
+        blogPage()
+    </script>
 </body>
 
 </html>

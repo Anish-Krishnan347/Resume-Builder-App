@@ -55,3 +55,7 @@ span{
     display: flex;
     align-items: flex-start;
 }
+#logout{
+    margin-left: 13px;
+    margin-top: 10px;
+}

@@ -109,7 +109,7 @@ function saveResumes(){
     window.location = 'resume_list.html'
 } 
 
-function renderList(){
+/*function renderList(){
     let exist_data = localStorage.getItem('resume_list')
     let parse_exist_data = JSON.parse(exist_data)
     let render = ''
@@ -120,7 +120,7 @@ function renderList(){
     }
     document.getElementById('list').innerHTML=render 
        
-}
+}*/
 
 
 
@@ -158,7 +158,7 @@ var updateSkille = ''
 var updateLanguage = ' '
 var updateProject = ''
 var updateEducation = ''
-function editview(){
+/*function editview(){
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
 
@@ -235,7 +235,7 @@ function editview(){
                                             </tr>`
     }
     document.getElementById('editProjectTable').innerHTML=updateProject
-}
+}*/
 function updateOperation(element,index_no,key_word,parent_key){
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
@@ -416,7 +416,7 @@ function view(){
 
 
 
-function addMore(id){    
+/*function addMore(id){    
 
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
@@ -509,7 +509,7 @@ function addMore(id){
     }
 
     localStorage.setItem('resume_list',JSON.stringify(parse_exist_data))
-}
+}*/
 /*function addMoreTable(){
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
