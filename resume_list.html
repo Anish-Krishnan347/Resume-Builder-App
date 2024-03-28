@@ -23,7 +23,7 @@
 <script type="module">
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getFirestore,addDoc, collection,getDocs,deleteDoc,doc  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+    import { getFirestore,addDoc, collection,getDocs,deleteDoc,doc,query,where  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -41,17 +41,17 @@
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 
-    
-
     function getResume(){
-        getDocs(collection(db,'userResumeData')).then(docSnap =>{
+        let locatData = localStorage.getItem('userloginData')
+        let parseData = JSON.parse(locatData)
+        getDocs(query(collection(db,'userResumeData'),where('userId','==',parseData.Id))).then(docSnap =>{
         let renderHtml = ''
         docSnap.forEach((each)=>{
             let eachResume = each.data()
 
             
             renderHtml = renderHtml + `<li><a href="template.html?resumeId=${each.id}"> 
-        ${eachResume.Title}</a><button type='button' onclick="test('${each.id}')">Delete</button>
+        ${eachResume.Title}</a><button type='button' onclick="deleteResume('${each.id}')">Delete</button>
         <a href='edit_page.html?resumeId=${each.id}'><button>Edit</button></a></li>`
         })
         document.getElementById('list').innerHTML = renderHtml
@@ -74,7 +74,7 @@
     deleteDoc(doc(db,"userResumeData",resumeId))
     getResume()
 }
-    window.test = deleteResume
+    window.deleteResume = deleteResume
 
     
 

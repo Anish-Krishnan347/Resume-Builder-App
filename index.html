@@ -146,18 +146,21 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        const parms = new URLSearchParams(document.location.search);
-        const id = parms.get('userId') 
+        // const parms = new URLSearchParams(document.location.search);
+        // const id = parms.get('userId') 
+
+        let locat_value = localStorage.getItem('userloginData')
+        let parseData = JSON.parse(locat_value)
 
 
         document.getElementById('saveResume').addEventListener('click', async (e)=>{
-            const docRef =await addDoc(collection(db, "userResumeData"), resume)
+            const docRef =await addDoc(collection(db, "userResumeData"), {...resume,userId:parseData.Id})
 
             // location = 'resume_list.html'
-            location = `resume_list.html?userId=${id}`
+            location = `resume_list.html`
         })
         document.getElementById('nxtPage').addEventListener('click',(e=>{
-            location = `resume_list.html?userId=${id}`
+            location = `resume_list.html`
         }))
         
         // IF localstorage have no data back to login page
