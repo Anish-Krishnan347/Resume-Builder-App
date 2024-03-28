@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create Resume👇</title>
     <link rel="stylesheet" href="resume_build.css">
     <script src="resume.js" type="text/javascript"></script>
 </head>
@@ -13,7 +13,7 @@
         <form id="form" class="registere">
             <h1>Resume Building</h1>
             <div class="inner_content">
-                <label>Title: </label>
+                <label>Job title: </label>
                 <input type="text" placeholder="Enter your Title" onkeyup="gene(this,'Title')">
             </div>
             <div class="inner_content">
@@ -68,7 +68,7 @@
                 <input type="text" placeholder="Enter course name" onkeyup="gene(this,'Education',false,0,'course')">
                 <input type="text" placeholder="Enter ins name" onkeyup="gene(this,'Education',false,0,'ins_name')">
                 <input type="number" placeholder="Enter percentage" onkeyup="gene(this,'Education',false,0,'percentage')">
-                <input type="year" placeholder="Enter year of pass" onkeyup="gene(this,'Education',false,0,'year_of_pass')">
+                <input type="number" placeholder="Enter year of pass" onkeyup="gene(this,'Education',false,0,'year_of_pass')">
                 
             </div>
             <div class="inner_content">
@@ -76,7 +76,7 @@
                 <input type="text" placeholder="Enter course name" onkeyup="gene(this,'Education',false,1,'course')">
                 <input type="text" placeholder="Enter ins name" onkeyup="gene(this,'Education',false,1,'ins_name')">
                 <input type="number" placeholder="Enter percentage" onkeyup="gene(this,'Education',false,1,'percentage')">
-                <input type="year" placeholder="Enter year of pass" onkeyup="gene(this,'Education',false,1,'year_of_pass')">
+                <input type="number" placeholder="Enter year of pass" onkeyup="gene(this,'Education',false,1,'year_of_pass')">
                 
             </div>
             <div class="inner_content">
@@ -84,10 +84,9 @@
                 <input type="text" placeholder="Enter course name" onkeyup="gene(this,'Education',false,2,'course')">
                 <input type="text" placeholder="Enter ins name" onkeyup="gene(this,'Education',false,2,'ins_name')">
                 <input type="number" placeholder="Enter percentage" onkeyup="gene(this,'Education',false,2,'percentage')">
-                <input type="year" placeholder="Enter year of pass" onkeyup="gene(this,'Education',false,2,'year_of_pass')">
+                <input type="number" placeholder="Enter year of pass" onkeyup="gene(this,'Education',false,2,'year_of_pass')">
                 
-            </div>
-            <button id="btn" type="button">Add more</button>
+            </div>  
 
             <h2>Experience</h2>
             <div class="inner_content">
@@ -113,15 +112,75 @@
             </div>
 
             
-            <button type="button" onclick="saveResumes()">Submit</button>
+            <button type="button" id="saveResume">Submit</button>
         </form>
+        
         
         <div class="code_review">
             <pre id="coded">
 
             </pre>
         </div>
+        
     </div>
+    <button type="button" id="logout">Logout</button>
+    <button type="button" id="nxtPage">Move to list page</button>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
+        import { getFirestore,addDoc, collection,getDocs  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCT_xsd2Cm1lZZD9ZohIzcxfiSVXAmeZUM",
+          authDomain: "resume-app-03.firebaseapp.com",
+          projectId: "resume-app-03",
+          storageBucket: "resume-app-03.appspot.com",
+          messagingSenderId: "59375422061",
+          appId: "1:59375422061:web:52a894dcd57780f1fc8d64"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // const parms = new URLSearchParams(document.location.search);
+        // const id = parms.get('userId') 
+
+        let locat_value = localStorage.getItem('userloginData')
+        let parseData = JSON.parse(locat_value)
+
+
+        document.getElementById('saveResume').addEventListener('click', async (e)=>{
+            const docRef =await addDoc(collection(db, "userResumeData"), {...resume,userId:parseData.Id})
+
+            // location = 'resume_list.html'
+            location = `resume_list.html`
+        })
+        document.getElementById('nxtPage').addEventListener('click',(e=>{
+            location = `resume_list.html`
+        }))
+        
+        // IF localstorage have no data back to login page
+        if(!localStorage.getItem('userloginData')){
+            location = "app_RL/login.html"
+        }
+
+        // logout
+        document.getElementById('logout').addEventListener('click',(e)=>{
+            localStorage.removeItem('userloginData')
+            location="app_RL/login.html"
+        })
+
+        
+        
+
+        
+
+    </script>
+      
     
 </body>
 </html>
