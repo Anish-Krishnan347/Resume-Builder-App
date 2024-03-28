@@ -165,13 +165,13 @@
         
         // IF localstorage have no data back to login page
         if(!localStorage.getItem('userloginData')){
-            location = "app_RL/login.html"
+            location = "app_RL/index.html"
         }
 
         // logout
         document.getElementById('logout').addEventListener('click',(e)=>{
             localStorage.removeItem('userloginData')
-            location="app_RL/login.html"
+            location="app_RL/index.html"
         })
 
         

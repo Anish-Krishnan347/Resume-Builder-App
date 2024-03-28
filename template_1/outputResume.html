@@ -368,14 +368,14 @@
     //    **************LOGOUT**************
     document.getElementById('logout').addEventListener('click',(e)=>{
         localStorage.removeItem('userloginData')
-        location = "../app_RL/login.html"
+        location = "../app_RL/index.html"
     })
 
     // ********BACK TO LOGIN PAGE**************
    
 
        if(!localStorage.getItem('userloginData')){
-            location = "../app_RL/login.html"
+            location = "../app_RL/index.html"
         }
         
     
