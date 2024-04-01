@@ -112,7 +112,7 @@
             </div>
 
             
-            <button type="button" id="saveResume">Submit</button>
+            <button type="button" onclick="saveResume()">Submit</button>
         </form>
         
         
@@ -123,43 +123,13 @@
         </div>
         
     </div>
-    <button type="button" id="logout">Logout</button>
+    <button type="button" onclick="logout()">Logout</button>
     <button type="button" id="nxtPage">Move to list page</button>
-    <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getFirestore,addDoc, collection,getDocs  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCT_xsd2Cm1lZZD9ZohIzcxfiSVXAmeZUM",
-          authDomain: "resume-app-03.firebaseapp.com",
-          projectId: "resume-app-03",
-          storageBucket: "resume-app-03.appspot.com",
-          messagingSenderId: "59375422061",
-          appId: "1:59375422061:web:52a894dcd57780f1fc8d64"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        // const parms = new URLSearchParams(document.location.search);
-        // const id = parms.get('userId') 
-
-        let locat_value = localStorage.getItem('userloginData')
-        let parseData = JSON.parse(locat_value)
-
-
-        document.getElementById('saveResume').addEventListener('click', async (e)=>{
-            const docRef =await addDoc(collection(db, "userResumeData"), {...resume,userId:parseData.Id})
-
-            // location = 'resume_list.html'
-            location = `resume_list.html`
-        })
-        document.getElementById('nxtPage').addEventListener('click',(e=>{
+    <script type="module" src="firebase.js">
+    </script>
+    <script>
+    // MOVE TO NEXT PAGE
+    document.getElementById('nxtPage').addEventListener('click',(e=>{
             location = `resume_list.html`
         }))
         
@@ -167,18 +137,6 @@
         if(!localStorage.getItem('userloginData')){
             location = "index.html"
         }
-
-        // logout
-        document.getElementById('logout').addEventListener('click',(e)=>{
-            localStorage.removeItem('userloginData')
-            location="index.html"
-        })
-
-        
-        
-
-        
-
     </script>
       
     

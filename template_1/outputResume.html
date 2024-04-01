@@ -271,115 +271,20 @@
     <script src="assets/vendors/@popperjs/core/dist/umd/popper-base.min.js"></script>
     <script src="assets/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="assets/js/live-resume.js"></script>
+    <script src="../firebase.js" type="module"></script>
 
 <!-- 
     <script src="../template.js"></script> -->
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-        import { getFirestore,getDoc,collection,doc,getDocs,updateDoc  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-      
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCT_xsd2Cm1lZZD9ZohIzcxfiSVXAmeZUM",
-          authDomain: "resume-app-03.firebaseapp.com",
-          projectId: "resume-app-03",
-          storageBucket: "resume-app-03.appspot.com",
-          messagingSenderId: "59375422061",
-          appId: "1:59375422061:web:52a894dcd57780f1fc8d64"
-        };
-      
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-    
-       
-        let params = new URLSearchParams(document.location.search);
-        let index = params.get("resumeId");
-        
-       getDocs(collection(db,'userResumeData')).then(resumePage=>{
-        resumePage.forEach((doc)=>{
-            if(index == doc.id){
-                let datas = doc.data()
-                document.getElementById('profile-name').innerHTML = datas.Name
-                document.getElementById('profiles-name').innerHTML = datas.Name
-                document.getElementById('re-contact').innerHTML = `Contact : ${datas.Contact}`
-                document.getElementById('re-mail').innerHTML = `Email : ${datas.Email}`
-                document.getElementById('re-title').innerHTML=datas.Title
-                document.getElementById('dec').innerHTML = datas.Declaration
-
-
-    let language = ''
-    for(const each of datas.Language){
-        language = language+`<p>${each}</p>`
-    }
-    document.getElementById('language').innerHTML=language
-
-    let hobby= ''
-    for(const each of datas.Hobbies){
-        hobby = hobby + `<p>${each}</p>`
-    }
-    document.getElementById('hobbies').innerHTML = hobby
-
-    let skill = ''
-    for(const each of datas.Skills){
-        skill = skill + `<p>${each}</p>`
-    }
-    document.getElementById('skills').innerHTML = skill
-
-    let empty_education = ''
-    for(const each of datas.Education){
-        empty_education = empty_education + `<li class="time-line-item">
-                                                <span class="badge badge-primary">${each.year_of_pass}</span>
-                                                <h6 class="time-line-item-title">${each.course}</h6>
-                                                <p class="time-line-item-subtitle">${each.ins_name}</p>
-                                                <p class="time-line-item-content">${each.percentage}</p>
-                                            </li>`
-
-    }
-    document.getElementById('re_education').innerHTML = empty_education
-
-    let empty_experience = ''
-    for(const each of datas.Experience){
-        empty_experience = empty_experience + `<li class="time-line-item">
-                                                    <span class="badge badge-primary">${each.year}</span>
-                                                    <h6 class="time-line-item-title">${each.role}</h6>
-                                                    <p class="time-line-item-subtitle">${each.company_name}</p>
-                                                </li>`
-    }
-
-    document.getElementById('re_experience').innerHTML = empty_experience
-
-    let empty_project = ''
-    for(const each of datas.Project){
-        empty_project = empty_project + `<li class="time-line-item">
-                                                    <span class="badge badge-primary">${each.year}</span>
-                                                    <h6 class="time-line-item-title">${each.role}</h6>
-                                                    <p class="time-line-item-subtitle">${each.title}</p>
-                                                </li>`
-    }
-    document.getElementById('re_project').innerHTML = empty_project
-            }
-        })
-       })
-
-    //    **************LOGOUT**************
-    document.getElementById('logout').addEventListener('click',(e)=>{
-        localStorage.removeItem('userloginData')
-        location = "../index.html"
-    })
-
-    // ********BACK TO LOGIN PAGE**************
-   
-
-       if(!localStorage.getItem('userloginData')){
+        outPutResume()
+    </script>
+    <script>
+        if(!localStorage.getItem('userloginData')){
             location = "../index.html"
         }
-        
-    
-    
+        document.getElementById('logout').addEventListener('click',(e)=>{
+            location = '../index.html'
+        })
     </script>
     
     

@@ -43,6 +43,8 @@
     <div id="hobby">
 
     </div><button type='button' onclick="addMore('hobby')">Add more</button><br>
+
+
     <h2>Education</h2>
     <table>
         <thead>
@@ -81,178 +83,24 @@
         </tbody>
     </table><button type="button" onclick="addMore('editProjectTable')">Add more</button><br><br>
     
-    <button id="updateData" type="button" >Update</button>
+    <button onclick="updateFunction()" type="button" >Update</button>
     
 </body>
 
-<script>
-    // editview()
-</script>
+<script type="module" src="firebase.js"></script>
 <script type="module">
-    // Import the functions you need from the SDKs you need
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-    import { getFirestore,getDoc,collection,doc,getDocs,updateDoc  } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-    // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-  
-    // Your web app's Firebase configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyCT_xsd2Cm1lZZD9ZohIzcxfiSVXAmeZUM",
-      authDomain: "resume-app-03.firebaseapp.com",
-      projectId: "resume-app-03",
-      storageBucket: "resume-app-03.appspot.com",
-      messagingSenderId: "59375422061",
-      appId: "1:59375422061:web:52a894dcd57780f1fc8d64"
-    };
-  
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+    editView()
+</script>
 
-   
-    let params = new URLSearchParams(document.location.search);
-    let index = params.get("resumeId");
-    
-    getDocs(collection(db,'userResumeData')).then(edit =>{
-        edit.forEach((doc)=>{
-            if(index == doc.id){
-            let datas = doc.data()
-            document.getElementById('editName').value=datas.Title
-            document.getElementById('editNames').value=datas.Name
-            document.getElementById('editAge').value=datas.Age
-            document.getElementById('editEmail').value=datas.Email
-            document.getElementById('editContact').value=datas.Contact
-            document.getElementById('editDeclaration').value=datas.Declaration
-            document.getElementById('editFname').value=datas.personal_details.father_name
-            document.getElementById('editMname').value=datas.personal_details.mother_name
-            // to get skill
-            let updateSkille = ''
 
-            for(const each of datas.Skills){
-                 updateSkille = updateSkille + `<input class="inputSkills" value=${each} />`
-            }
-            document.getElementById('skill').innerHTML = updateSkille
+<script>
+    function perview(){
+    document.getElementById('coded').innerHTML = JSON.stringify(resume,null,4)
+}
 
-            // to get language
-            let updateLanguage = ''
-            for(const eachLang of datas.Language){
-                updateLanguage = updateLanguage + `<input class="inputLanguage" value=${eachLang} />`
-            }
-            document.getElementById('language').innerHTML = updateLanguage
-
-          //  *******************TO GET HOBBIES************************
-            let updateHobby = ' '
-            for(const eachHobby of datas.Hobbies){
-                updateHobby = updateHobby + `<input class="inputHobby" value=${eachHobby} />`
-
-            }
-            document.getElementById('hobby').innerHTML = updateHobby
-
-            // to get education
-
-            let educationOperation = datas.Education
-            let updateEducation = ''
-    
-            for(const eachEducation in educationOperation){
-                updateEducation = updateEducation + `<tr>
-                                 <td><input value="${educationOperation[eachEducation].course}" onkeyup=updateOperation(this,${eachEducation},'course','Education') /> </td>
-                                 <td><input value="${educationOperation[eachEducation].ins_name}" onkeyup=updateOperation(this,${eachEducation},'ins_name','Education') /></td>
-                                 <td><input type='number' value="${educationOperation[eachEducation].percentage}" onkeyup=updateOperation(this,${eachEducation},'percentage','Education') /></td>
-                                 <td><input type='number' value="${educationOperation[eachEducation].year_of_pass}" onkeyup=updateOperation(this,${eachEducation},'year_of_pass','Education') /></td>
-                                            </tr>`
-                                            
-            }
-            document.getElementById('editEducationTable').innerHTML=updateEducation
-
-            //  *******************TO GET EXPERIENCE************************
-
-            let experienceOperation = datas.Experience
-            let updateExperience = ''
-            for(const eachExperience in experienceOperation){
-                updateExperience = updateExperience + `<tr>
-                                <td><input value="${experienceOperation[eachExperience].company_name}" onkeyup=updateOperation(this,${eachExperience},'company_name','Experience') /> </td>
-                                 <td><input value="${experienceOperation[eachExperience].role}" onkeyup=updateOperation(this,${eachExperience},'role','Experience') /></td>
-                                 <td><input type='number' value="${experienceOperation[eachExperience].year}" onkeyup=updateOperation(this,${eachExperience},'year','Experience') /></td>
-                                                    </tr>`
-            }
-            document.getElementById('editExperienceTable').innerHTML=updateExperience
-
-            let projectOperation = datas.Project
-    
-            for(const eachProject in projectOperation){
-                updateProject = updateProject + `<tr>
-                                <td><input value="${projectOperation[eachProject].title}" onkeyup=updateOperation(this,${eachProject},'title','Project') /> </td>
-                                 <td><input value="${projectOperation[eachProject].role}" onkeyup=updateOperation(this,${eachProject},'role','Project') /></td>
-                                 <td><input type='number' value="${projectOperation[eachProject].year}" onkeyup=updateOperation(this,${eachProject},'year','Project') /></td>
-                                            </tr>`
-            }
-            document.getElementById('editProjectTable').innerHTML=updateProject
-        }
-    })
-    
-    document.getElementById('updateData').addEventListener('click', async(e)=>{
-        // single method
-        let name = document.getElementById('editNames').value
-        let title = document.getElementById('editName').value
-        let age = document.getElementById('editAge').value
-        let email = document.getElementById('editEmail').value
-        let contact = document.getElementById('editContact').value
-        let declaration = document.getElementById('editDeclaration').value
-        let fname = document.getElementById('editFname').value
-        let mname = document.getElementById('editMname').value
-        // array method
-        let skill = document.getElementsByClassName('inputSkills')
-        let language = document.getElementsByClassName('inputLanguage')
-        let hobby = document.getElementsByClassName('inputHobby')
-
-        let updatedSkill = []
-        let updatedLanguage = []
-        let updatedHobby = []
-        let updatedEducation=[]
-        
-
-        for(const each of skill){
-            updatedSkill.push(each.value)
-        }
-        for(const each of language){
-            updatedLanguage.push(each.value)
-        }
-        for(const each of hobby){
-            updatedHobby.push(each.value)
-        }
-
-        
-        await updateDoc(doc(db,"userResumeData",index),{
-            Name : name,
-            Title: title,
-            Age : age,
-            Email : email,
-            Contact : contact,
-            Declaration : declaration,
-            personal_details:{
-                father_name : fname,
-                mother_name : mname
-
-            },
-            Skills : updatedSkill,
-            Hobbies : updatedHobby,
-            Language : updatedLanguage,
-        })
-        alert('update Successfull')
-        location = 'resume_list.html'
-        
-    })
-    if(!localStorage.getItem('userloginData')){
+        if(!localStorage.getItem('userloginData')){
             location = "index.html"
     }
-    
-    
-    
-
-})
-    </script>
-
-    <script>
         function addMore(id){
             if(id == 'skill'){
                 let addSkill = document.getElementById('skill')
@@ -281,8 +129,65 @@
                 addHobby.appendChild(addNewHobby)
 
             }
+            else if(id=='editEducationTable'){
+        let educationLength = resume.Education.length;
+        // let addEducation = document.getElementById('editEducationTable').innerHTML
+        
+        let addNewEducation = `<tr>
+        <td><input placeholder='Enter course name' onkeyup=updateOperation(this,${educationLength},'course','Education') /> </td>
+        <td><input placeholder='Enter Institute name' onkeyup=updateOperation(this,${educationLength},'ins_name','Education') /></td>
+        <td><input type='number' placeholder='Enter percentage' onkeyup=updateOperation(this,${educationLength},'percentage','Education') /></td>
+        <td><input type='number' placeholder='Enter Year of passed out' onkeyup=updateOperation(this,${educationLength},'year_of_pass','Education') /></td>
+                   </tr>`
+        resume.Education[educationLength]={
+            course:'',
+            ins_name:'',
+            percentage:'',
+            year_of_pass:''
         }
-    </script>
+
+        document.getElementById('editEducationTable').insertAdjacentHTML('beforeend',addNewEducation)
+
+
+        
+    }
+    else if(id=='editExperienceTable'){
+        let experienceLength = resume.Experience.length;
+        // let addExperience = document.getElementById('editExperienceTable').innerHTML
+        
+        let addNewExperience = `<tr>
+        <td><input placeholder='Enter course name' onkeyup=updateOperation(this,${experienceLength},'company_name','Experience') /> </td>
+        <td><input placeholder='Enter Institute name' onkeyup=updateOperation(this,${experienceLength},'role','Experience') /></td>
+        <td><input type='number' placeholder='Enter percentage' onkeyup=updateOperation(this,${experienceLength},'year','Experience') /></td>
+                   </tr>`
+        resume.Experience[experienceLength]={
+            company_name:'',
+            role:'',
+            year:''
+        }
+
+        document.getElementById('editExperienceTable').insertAdjacentHTML('beforeend',addNewExperience)}
+
+        else if(id=='editProjectTable'){
+        let projectLength = resume.Project.length;
+        // let addProject = document.getElementById('editProjectTable').innerHTML
+        
+        let addNewProject = `<tr>
+        <td><input placeholder='Enter course name' onkeyup=updateOperation(this,${projectLength},'title','Project') /> </td>
+        <td><input placeholder='Enter Institute name' onkeyup=updateOperation(this,${projectLength},'role','Project') /></td>
+        <td><input type='number' placeholder='Enter percentage' onkeyup=updateOperation(this,${projectLength},'year','Project') /></td>
+                   </tr>`
+        resume.Project[projectLength]={
+            company_name:'',
+            role:'',
+            year:''
+        }
+
+        document.getElementById('editProjectTable').insertAdjacentHTML('beforeend',addNewProject)}
+    }
+    
+       
+</script>
 
 
 </html>

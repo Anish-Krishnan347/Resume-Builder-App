@@ -240,13 +240,13 @@ function updateOperation(element,index_no,key_word,parent_key){
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
 
-    let edit_data = localStorage.getItem('resume_list')
-    let parse_edit_data = JSON.parse(edit_data)
-    // let educationOperation = parse_edit_data[index]
-    parse_edit_data[index][parent_key][index_no][key_word]=element.value
+    
+   resume[parent_key][index_no][key_word]=element.value
 
+    // console.log(resume)
+    
 
-    localStorage.setItem('resume_list',JSON.stringify(parse_edit_data))
+    // localStorage.setItem('resume_list',JSON.stringify(parse_edit_data))
 }
 
 // *********************\ONE METHOD👇TO UPDATE VALUE/*************************
