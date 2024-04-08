@@ -7,6 +7,9 @@
     <script src="resume.js" type="text/javascript"></script>
     <link rel="stylesheet" href="resume_build.css">
     <style>
+        label{
+            font-size: 15px;
+        }
         table {
           font-family: arial, sans-serif;
           border-collapse: collapse;
@@ -94,9 +97,9 @@
 
 
 <script>
-    function perview(){
-    document.getElementById('coded').innerHTML = JSON.stringify(resume,null,4)
-}
+//     function perview(){
+//     document.getElementById('coded').innerHTML = JSON.stringify(resume,null,4)
+// }
 
         if(!localStorage.getItem('userloginData')){
             location = "index.html"

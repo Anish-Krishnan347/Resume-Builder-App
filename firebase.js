@@ -111,9 +111,9 @@ async function getResume(){
         let eachResume = each.data()
 
         
-        renderHtml = renderHtml + `<li><a href="template.html?resumeId=${each.id}"> 
-    ${eachResume.Title}</a><button type='button' onclick="deleteResume('${each.id}')">Delete</button>
-    <a href='edit_page.html?resumeId=${each.id}'><button>Edit</button></a></li>`
+        renderHtml = renderHtml + `<tr><td><a href="template.html?resumeId=${each.id} " style='text-decoration:none; color:white;'> 
+    ${eachResume.Title}</a></td><td><button class="btn btn-outline-danger" type='button' onclick="deleteResume('${each.id}')">Delete</button></td>
+    <td><a href='edit_page.html?resumeId=${each.id}'><button class='btn btn-outline-warning'>Edit</button></a></td></tr>`
     })
     document.getElementById('list').innerHTML = renderHtml
 })
@@ -233,7 +233,7 @@ async function updateFunction(){
         let updatedSkill = []
         let updatedLanguage = []
         let updatedHobby = []
-        let updatedEducation=[]
+        // let updatedEducation=[]
         
 
         for(const each of skill){

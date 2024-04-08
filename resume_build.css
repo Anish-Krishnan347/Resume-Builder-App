@@ -1,4 +1,4 @@
-.main{
+/* .main{
     display: flex;
     
     justify-content: space-around;
@@ -58,4 +58,23 @@ span{
 #logout{
     margin-left: 13px;
     margin-top: 10px;
+} */
+
+/* .container{
+    background-color: #bbcb97;
+} */
+.inner_content{
+    width: 50%;
+    margin: 0 auto ;
+}
+label{
+    font-size: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+#width{
+    width: 25%;
+}
+.btn{
+    width: 75px;
 }

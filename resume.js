@@ -142,22 +142,22 @@ function saveResumes(){
 
 // ***************************ALTER METHODDS👇 *******************************
 
-function remove(key){
-    let string_data = localStorage.getItem('resume_list')
-    let parsed_data = JSON.parse(string_data)
-    let newArray=[]
-    for(const eachs in parsed_data){
-        if(eachs!=key){
-            newArray.push(parsed_data[eachs])
-        }
-    }
-    localStorage.setItem('resume_list',JSON.stringify(newArray))
-    window.location= 'resume_list.html'
-}
-var updateSkille = ''
-var updateLanguage = ' '
-var updateProject = ''
-var updateEducation = ''
+// function remove(key){
+//     let string_data = localStorage.getItem('resume_list')
+//     let parsed_data = JSON.parse(string_data)
+//     let newArray=[]
+//     for(const eachs in parsed_data){
+//         if(eachs!=key){
+//             newArray.push(parsed_data[eachs])
+//         }
+//     }
+//     localStorage.setItem('resume_list',JSON.stringify(newArray))
+//     window.location= 'resume_list.html'
+// }
+// var updateSkille = ''
+// var updateLanguage = ' '
+// var updateProject = ''
+// var updateEducation = ''
 /*function editview(){
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
@@ -240,7 +240,7 @@ function updateOperation(element,index_no,key_word,parent_key){
     let params = new URLSearchParams(document.location.search);
     let index = params.get("index");
 
-    
+        
    resume[parent_key][index_no][key_word]=element.value
 
     // console.log(resume)
