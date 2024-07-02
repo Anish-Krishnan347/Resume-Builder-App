@@ -13,16 +13,10 @@
 
 <body>
     <header>
-        <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto"><img src="assets/images/share.svg" alt="share" class="btn-img">
+        <button class="btn btn-white btn-share"><img src="assets/images/share.svg" alt="share" class="btn-img">
             SHARE</button>
-        <button class="btn btn-white btn-share ml-auto mr-3 ml-md-0 mr-md-auto" style="background-color: blue; color: white;" id="logout">Logout</button>
+        <button class="btn btn-danger btn-share" style="background-color: rgb(255, 72, 0); color: white;" id="logout">Logout</button>
 
-        
-        <nav class="collapsible-nav" id="collapsible-nav">
-            
-        </nav>
-        <button class="btn btn-menu-toggle btn-white rounded-circle" data-toggle="collapsible-nav"
-            data-target="collapsible-nav"><img src="assets/images/hamburger.svg" alt="hamburger"></button>
     </header>
     <div class="content-wrapper">
         <aside>
@@ -279,7 +273,7 @@
         outPutResume()
     </script>
     <script>
-        if(!localStorage.getItem('userloginData')){
+        if(!localStorage.getItem('loginData')){
             location = "../index.html"
         }
         document.getElementById('logout').addEventListener('click',(e)=>{

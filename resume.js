@@ -67,7 +67,6 @@ function gene(ele,key,p_key,index,c_key){
     resume[key] = ele.value;
 
     }
-    perview()
 }
 
 function addArry(key,id){
@@ -92,22 +91,22 @@ function addArry(key,id){
 //     }
 // }
 
-function perview(){
-    document.getElementById('coded').innerHTML = JSON.stringify(resume,null,4)
-}
+// function perview(){
+//     document.getElementById('coded').innerHTML = JSON.stringify(resume,null,4)
+// }
 
-function saveResumes(){
-    if(!localStorage.getItem('resume_list')){
-        localStorage.setItem('resume_list',JSON.stringify([]))
-    }
+// function saveResumes(){
+//     if(!localStorage.getItem('resume_list')){
+//         localStorage.setItem('resume_list',JSON.stringify([]))
+//     }
 
-    let existing_data =localStorage.getItem('resume_list')
-    let parse_data = JSON.parse(existing_data)
-    let updated_data = [...parse_data,resume]
+//     let existing_data =localStorage.getItem('resume_list')
+//     let parse_data = JSON.parse(existing_data)
+//     let updated_data = [...parse_data,resume]
 
-    localStorage.setItem('resume_list',JSON.stringify(updated_data))
-    window.location = 'resume_list.html'
-} 
+//     localStorage.setItem('resume_list',JSON.stringify(updated_data))
+//     window.location = 'resume_list.html'
+// } 
 
 /*function renderList(){
     let exist_data = localStorage.getItem('resume_list')

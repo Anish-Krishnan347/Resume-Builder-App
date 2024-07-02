@@ -27,12 +27,12 @@
         location=`template_1/outputResume.html?resumeId=${index}`
     }
     }
-    if(!localStorage.getItem('userloginData')){
+    if(!localStorage.getItem('loginData')){
             location = "index.html"
         }
     
         document.getElementById('logout').addEventListener('click',(e)=>{
-            localStorage.removeItem('userloginData')
+            localStorage.removeItem('loginData')
             location="index.html"
         })
 </script>
