@@ -67,12 +67,12 @@
             formData.append("userPassword",passwords);
 
             await axios
-            .post("https://anishkrishnan.pythonanywhere.com/createResumeUser", formData)
-            .then((res) => {console.log(res.data)})
-
-        
-        alert('Registration successfull')
-        location = 'createResume.html'
+            .post("https://anishkrishnan.pythonanywhere.com/createResumeUser", formData).then((res)=>{
+            alert('Registration successfull')
+            location = 'createResume.html'
+            localStorage.setItem('loginData',JSON.stringify(res.data))
+            })
+            
         }
 }
 window.register = register
